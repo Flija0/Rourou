@@ -1,0 +1,45 @@
+<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+  <thead
+    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+  >
+    <tr>
+      <th scope="col" class="px-6 py-3">Subject</th>
+      <th scope="col" class="px-6 py-3">Content</th>
+      <th scope="col" class="px-6 py-3">Date</th>
+      <th scope="col" class="px-6 py-3">State</th>
+      <th scope="col" class="px-6 py-3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let complaint of complaints"
+      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+    >
+      <td class="px-6 py-4 text-black font-semibold">
+        {{ complaint.subject }}
+      </td>
+      <td class="px-6 py-4">{{ complaint.content }}</td>
+      <td class="px-6 py-4">{{ complaint.date }}</td>
+      <td class="px-6 py-4">{{ complaint.state }}</td>
+      <td class="px-6 py-4 flex items-center gap-1">
+        <button
+          class="px-4 py-2 text-sm text-white  w-[75px] {{
+            complaint.state === 'treated' ? 'bg-green-400' : 'bg-purple-500'
+          }} rounded {{
+            complaint.state !== 'treated' ? ' hover:bg-purple-700' : ''
+          }} "
+          (click)="updateComplaint(complaint)"
+          [disabled]="complaint.state === 'treated'"
+        >
+          {{ complaint.state === "treated" ? "Treated" : "Treat" }}
+        </button>
+        <button
+          class="px-4 py-2 text-sm text-white w-[75px] bg-red-500 rounded hover:bg-red-700"
+          (click)="deleteComplaint(complaint)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

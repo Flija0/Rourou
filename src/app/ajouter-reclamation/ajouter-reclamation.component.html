@@ -1,0 +1,40 @@
+<div class="w-full max-w-xs">
+  <h1 class="text-center font-bold text-xl">Add Complaint</h1>
+  <form
+    #recForm="ngForm"
+    (ngSubmit)="OnSubmit(recForm)"
+    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col justify-center gap-1"
+  >
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="subject"
+      >Subject</label
+    >
+    <input
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      type="text"
+      [ngModel]="complaint.subject"
+      #subject="ngModel"
+      name="subject"
+      required
+    />
+
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="subject"
+      >Content</label
+    >
+
+    <input
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      type="text"
+      [ngModel]="complaint.content"
+      #content="ngModel"
+      name="content"
+      required
+    />
+
+    <button
+      type="submit"
+      class="shadow bg-purple-500 mt-6 hover:bg-purple-400 focus:shadow focus:outline-none text-white font-bold py-2 px-4 rounded"
+    >
+      Add Reclamation
+    </button>
+  </form>
+</div>
